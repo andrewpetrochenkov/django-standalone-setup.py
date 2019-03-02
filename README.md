@@ -1,34 +1,38 @@
-[![](https://img.shields.io/pypi/pyversions/cached.svg?longCache=True)](https://pypi.org/pypi/cached/)
-[![](https://img.shields.io/pypi/v/cached.svg?maxAge=3600)](https://pypi.org/pypi/cached/)
-[![Travis](https://api.travis-ci.org/looking-for-a-job/cached.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/cached.py/)
+[![](https://img.shields.io/pypi/pyversions/django-standalone-setup.svg?longCache=True)](https://pypi.org/project/django-standalone-setup/)
+[![](https://img.shields.io/pypi/v/django-standalone-setup.svg?maxAge=3600)](https://pypi.org/project/django-standalone-setup/)
+[![Travis](https://api.travis-ci.org/looking-for-a-job/django-standalone-setup.py.svg?branch=master)](https://travis-ci.org/looking-for-a-job/django-standalone-setup.py/)
 
 #### Install
 ```bash
-$ [sudo] pip install cached
+$ [sudo] pip install django-standalone-setup
 ```
 
-#### Functions
-function|description
--|-
-`cached.cached(function)`|`@cache` decorator, `cache(function)` - cache function result
+#### Features
+calls `django.setup` once only
+
+#### Config
+```bash
+$ export DJANGO_SETTINGS_MOULE='django_settings'
+```
+
+`site-package/django_settings.py`
+```python
+INSTALLED_APPS = [
+    'your_app',
+]
+DATABASES = {
+    'default': {
+        ...
+    }
+}
+```
 
 #### Examples
-`@cached` decorator
-
+`script.py`
 ```python
->>> from cached import cached
-
->>> @cached
-    def func(*args, **kwags):
-```
-
-`cached(function)` function
-```python
->>> from cached import cached
-
->>> def func(*args, **kwags):
-        ...
->>> cached(func)()
+# !/usr/bin/env python
+import django_standalone_setup # at the top of module
+...
 ```
 
 <p align="center"><a href="https://pypi.org/project/readme-md/">readme-md</a> - README.md generator</p>
