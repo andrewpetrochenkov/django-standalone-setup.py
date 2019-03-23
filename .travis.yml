@@ -1,12 +1,9 @@
+# https://pypi.org/project/travis-generator/
 language: python
 python:
-- "3.4"
 - "3.5"
-- "3.5-dev"
 - "3.6"
-- "3.6-dev"
 - "3.7-dev"
-- "nightly"
 notifications:
   email: false
 after_failure:
@@ -15,4 +12,3 @@ after_failure:
 - ./send.sh failure $WEBHOOK_URL
 install: curl -fLs https://git.io/fpfTa | bash -s
 script: curl -fLs https://git.io/fpfTw | bash -s
-
